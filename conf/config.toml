@@ -1,0 +1,17 @@
+default_service = "perplexity"
+
+[services.grok]
+ui_url = "https://grok.com/chat"
+input_selector = 'div.tiptap.ProseMirror[contenteditable="true"]'
+submit_selector = 'button[aria-label="Submit"][type="submit"]'
+response_selector = 'div.message-bubble .response-content-markdown p.break-words'
+headless = true
+timeout = 15000
+
+[services.perplexity]
+ui_url = "https://www.perplexity.ai"
+input_selector = "textarea[placeholder*='Ask']" # Targets textarea with "Ask" in placeholder
+submit_selector = "button[aria-label*='Search']" # Targets button with "Search" in aria-label
+response_selector = "div[class*='prose']" # Targets response container with "prose" in class
+headless = false # Set to false for debugging
+timeout = 60000 # Increased to 60 seconds for dynamic loading
